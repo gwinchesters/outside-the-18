@@ -1,0 +1,16 @@
+/*
+    Used by mocha for transforming files when running tests
+    Additional configuration details are in ./test/test-babel-config.js
+*/
+{
+    "presets": [ 
+        "react", 
+        ["env", {
+            "browsers": ["last 2 versions", "ie >= 9"]
+        }]
+    ],
+    "plugins": [
+        "transform-es2015-modules-commonjs",
+        "transform-react-constant-elements"
+    ]
+}
