@@ -1,6 +1,9 @@
 {
   "name": "outside-the-18",
   "version": "1.0.0",
+  "description": "Web content for OutsideThe18",
+  "author": "gsmith",
+  "main": "index.js",
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.6",
@@ -15,7 +18,7 @@
     "css-loader": "0.28.7",
     "dotenv": "4.0.0",
     "dotenv-expand": "4.2.0",
-    "eslint": "4.10.0",
+    "eslint": "^4.19.1",
     "eslint-config-react-app": "^2.1.0",
     "eslint-loader": "1.9.0",
     "eslint-plugin-flowtype": "2.39.1",
@@ -47,11 +50,12 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "lint": "eslint ./src/**/*.js --color",
+    "precommit": "echo 'Pre-commit checks...' && yarn run lint",
+    "postmerge": "yarn check",
+    "postcheckout": "yarn check"
   },
-  "description": "Web content for OutsideThe18",
-  "main": "index.js",
-  "author": "gsmith",
   "license": "MIT",
   "jest": {
     "collectCoverageFrom": [
