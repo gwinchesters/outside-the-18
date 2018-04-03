@@ -4,33 +4,69 @@
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
     "parserOptions": {
         "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
             "jsx": true
         },
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaVersion": 6
     },
     "plugins": [
         "react"
     ],
     "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
+        "no-console": 1,
+        "no-inline-comments": 2,
+        "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
+        "no-multi-spaces": 2,
+        "no-multi-str": 2,
+        "no-multiple-empty-lines": [2, {"max": 2}],
+        "object-curly-spacing": [2, "never"],
+        "quotes": [2, "double"],
+        "quote-props": [2, "always"],
+        "semi": 2,
+        "semi-spacing": [2, {"before": false, "after": true}],
+        "space-before-blocks": 2,
+        "keyword-spacing": ["error", {"before": true, "after": true}],
+        "space-in-parens": [2, "never"],
+        "space-infix-ops": 2,
+        "space-unary-ops": [2, { "words": true, "nonwords": false }],
+        "strict": [2, "function"],
+        "vars-on-top": 2,
+        "yoda": [2, "never"],
+        "arrow-body-style": [2, "always"],
+        "arrow-parens": [2, "always"],
+        "arrow-spacing": 2,
+        "no-confusing-arrow": 2,
+        "prefer-arrow-callback": 2,
+        "prefer-const": 2,
+        "jsx-quotes": [2, "prefer-double"],
+        "react/jsx-closing-bracket-location": 1,
+        "react/jsx-first-prop-new-line": [2,"multiline-multiprop"],
+        "react/jsx-indent": [2, 4],
+        "react/jsx-indent-props": 1,
+        "react/jsx-max-props-per-line": 1,
+        "react/jsx-no-duplicate-props": 1,
+        "react/jsx-no-undef": 1,
+        "react/jsx-pascal-case": 1,
+        "react/jsx-uses-react": 1,
+        "react/no-deprecated": 2,
+        "react/no-did-mount-set-state": 2,
+        "react/no-did-update-set-state": 2,
+        "react/no-direct-mutation-state": 2,
+        "react/no-find-dom-node": 2,
+        "react/no-is-mounted": 2,
+        "react/no-multi-comp": 2,
+        "react/no-render-return-value": 2,
+        "react/no-unescaped-entities": 2,
+        "react/no-unused-prop-types": [2, {"skipShapeProps": true}],
+        "react/prop-types": 1,
+        "react/sort-comp": 2
     }
 }
