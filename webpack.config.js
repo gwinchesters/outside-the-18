@@ -47,7 +47,8 @@ let plugins = [
     // files themselves do not, hence invalidating the cache
     new ManifestPlugin(),
     new HtmlWebpackPlugin({
-        template: 'index.ejs',
+        template: "index.ejs",
+        favicon: "src/images/favicon.ico"
     }),
     // plugin to aid in inlining the manifest.json file in the generated
     // index.html file
@@ -171,7 +172,10 @@ module.exports = {
             {
                 test: /\.(png|jpg)$/,
                 loader: "url-loader?limit=8192"
-            }
+            },
+            {
+                test: /\.(jpe?g|png|gif|ico)$/i, 
+                loader: 'file?name=[name].[ext]'},
         ]
     },
     resolve: {
