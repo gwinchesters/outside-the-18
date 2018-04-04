@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const InlineManifestWebpackPlugin = require("inline-manifest-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const path = require("path");
 const PROD = process.env.NODE_ENV === "PROD";
 
@@ -48,8 +49,10 @@ let plugins = [
     new ManifestPlugin(),
     new HtmlWebpackPlugin({
         template: "index.ejs",
-        favicon: "src/images/favicon.ico"
+        chunksSortMode: "dependency"
     }),
+
+    new FaviconsWebpackPlugin("./resources/img/logoa.png"),
     // plugin to aid in inlining the manifest.json file in the generated
     // index.html file
     new InlineManifestWebpackPlugin({
@@ -160,22 +163,23 @@ module.exports = {
                 ]
             },
             {
-                test: /\.css?$/,
-                use: [
-                    "style-loader",
-                    "css-loader"
-                ],
-                include: [
-
-                ]
+                test: /.(ttf|otf|eot|svg|ico|woff(2)?)(\?[a-z0-9]+)?$/,
+                use: [{
+                    loader: "file-loader",
+                    options: {
+                        name: "[name].[ext]"
+                    }
+                }]
             },
             {
-                test: /\.(png|jpg)$/,
-                loader: "url-loader?limit=8192"
-            },
-            {
-                test: /\.(jpe?g|png|gif|ico)$/i, 
-                loader: 'file?name=[name].[ext]'},
+                test: /\.(png|jpg|ico)$/,
+                use: [{
+                    loader: "url-loader",
+                    options: {
+                        limit: 8192
+                    }
+                }]
+            }
         ]
     },
     resolve: {
