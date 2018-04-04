@@ -53,7 +53,7 @@ let plugins = [
         chunksSortMode: "dependency"
     }),
 
-    new FaviconsWebpackPlugin("./resources/img/logoa.png"),
+    new FaviconsWebpackPlugin("./resources/img/logo.png"),
 
     new ExtractTextPlugin({
         filename: "dist/[name].bundle.css",

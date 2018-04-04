@@ -1,3 +1,16 @@
+$base-body-background: #000000;
+
 @import "~uikit/src/scss/variables.scss";
 @import "~uikit/src/scss/mixins.scss";
+
 @import "~uikit/src/scss/uikit.scss";
+
+
+#root {
+    padding: 0 0 0 0;
+}
+
+.app-container .img-logo {
+    text-align: center;
+}
+
