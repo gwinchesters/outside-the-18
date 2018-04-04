@@ -46,11 +46,8 @@ let plugins = [
     // the manifest is inlined in the bundle and could change even if the source
     // files themselves do not, hence invalidating the cache
     new ManifestPlugin(),
-    // generates an index.html file from a template. Used to inline the
-    // manifest.json file created above
     new HtmlWebpackPlugin({
-        template: "./index.ejs",
-        chunksSortMode: "dependency"
+        template: 'index.ejs',
     }),
     // plugin to aid in inlining the manifest.json file in the generated
     // index.html file
@@ -126,20 +123,9 @@ module.exports = {
             "es6-promise",
             "history",
             "immutable",
-            "intl",
             "react",
             "react-dom",
-            "react-grid-layout",
-            "react-intl",
             "react-router",
-            "react-router-redux",
-            "react-redux",
-            "redux",
-            "redux-form",
-            "redux-logger",
-            "redux-thunk",
-            "red3",
-            "ua-parser-js",
             "whatwg-fetch"
         ],
         app: PROD ? [
@@ -166,13 +152,10 @@ module.exports = {
                 use: PROD ? [
                     "babel-loader"
                 ] : [
-                    "react-hot-loader/webpack",
                     "babel-loader"
                 ],
                 include: [
-                    path.join(__dirname, "src"),
-                    path.join(__dirname, "node_modules/red3/index.js"),
-                    path.join(__dirname, "node_modules/red3/src")
+                    path.join(__dirname, "src")
                 ]
             },
             {
@@ -182,40 +165,7 @@ module.exports = {
                     "css-loader"
                 ],
                 include: [
-                    path.join(__dirname, "node_modules/react-datepicker"),
-                    path.join(__dirname, "node_modules/handsontable"),
-                    path.join(__dirname, "node_modules/react-grid-layout"),
-                    path.join(__dirname, "node_modules/react-resizable"),
-                    path.join(__dirname, "node_modules/red3"),
-                    path.join(__dirname, "node_modules/bulma"),
-                    path.join(__dirname, "node_modules/react-virtualized")
-                ]
-            },
-            // **IMPORTANT** This is needed so that each bootstrap js file
-            // required by bootstrap-webpack has access to the jQuery object
-            {
-                test: /bootstrap-sass[/\\]assets[/\\]javascripts[/\\]/,
-                loader: "imports-loader?jQuery=jquery"
-            },
-            // Needed for the css-loader when bootstrap-webpack loads
-            // bootstrap's css.
-            {
-                test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-                use: [{
-                    loader: "file-loader",
-                    options: {
-                        name: "[name].[ext]"
-                    }
-                }]
-            },
-            // End loaders specifically for bootstrap
-            {
-                test: /\.scss$/,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    "postcss-loader",
-                    "sass-loader"
+
                 ]
             },
             {

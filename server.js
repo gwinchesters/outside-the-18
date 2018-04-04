@@ -4,7 +4,7 @@ const config = require("./webpack.config");
 
 new WebpackDevServer(webpack(config), {
     contentBase: "./dist",
-    //hot: true,
+    hot: true,
     stats: {
         chunks: false,
         colors: true,
