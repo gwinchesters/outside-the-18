@@ -6,6 +6,7 @@ const InlineManifestWebpackPlugin = require("inline-manifest-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require("path");
 const PROD = process.env.NODE_ENV === "PROD";
 
@@ -53,6 +54,11 @@ let plugins = [
     }),
 
     new FaviconsWebpackPlugin("./resources/img/logoa.png"),
+
+    new ExtractTextPlugin({
+        filename: "dist/[name].bundle.css",
+        allChunks: true,
+    }),
     // plugin to aid in inlining the manifest.json file in the generated
     // index.html file
     new InlineManifestWebpackPlugin({
@@ -161,6 +167,16 @@ module.exports = {
                 include: [
                     path.join(__dirname, "src")
                 ]
+            },
+            {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        "css-loader",
+                        "sass-loader"
+                    ]
+                })
             },
             {
                 test: /.(ttf|otf|eot|svg|ico|woff(2)?)(\?[a-z0-9]+)?$/,
