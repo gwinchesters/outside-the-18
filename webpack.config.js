@@ -7,6 +7,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require("path");
 const PROD = process.env.NODE_ENV === "PROD";
 
@@ -53,12 +54,18 @@ let plugins = [
         chunksSortMode: "dependency"
     }),
 
-    new FaviconsWebpackPlugin("./resources/img/logo.png"),
+    new FaviconsWebpackPlugin("./resources/img/ot18Logo.png"),
 
     new ExtractTextPlugin({
         filename: "dist/[name].bundle.css",
         allChunks: true,
     }),
+    new CopyWebpackPlugin([
+        {
+            from: "./resources/img/ot18Logo.png",
+            to: "dist/img"
+        }
+    ]),
     // plugin to aid in inlining the manifest.json file in the generated
     // index.html file
     new InlineManifestWebpackPlugin({
@@ -192,7 +199,7 @@ module.exports = {
                 use: [{
                     loader: "url-loader",
                     options: {
-                        limit: 8192
+                        limit: 8192,
                     }
                 }]
             }
