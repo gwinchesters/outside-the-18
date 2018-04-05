@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import {hot} from "react-hot-loader";
-import NavBar from "src/components/NavBar";
-import HomePageContainer from "src/containers/HomePageContainer";
-import EpisodesPageContainer from "src/containers/EpisodesPageContainer";
+
+import MainPageContainer from "src/containers/MainPageContainer";
+import AdminPageContainer from "src/containers/AdminPageContainer";
 
 require("styles/base.scss");
 
@@ -14,15 +14,15 @@ class App extends Component {
         return (
             <Router>
                 <div>
-                    <NavBar/>
                     <Route 
                         exact
                         path="/"
-                        component={HomePageContainer}
+                        component={MainPageContainer}
                     />
                     <Route
-                        path="/episodes"
-                        component={EpisodesPageContainer}
+                        exact
+                        path="/admin"
+                        component={AdminPageContainer}
                     />
                 </div>
             </Router>

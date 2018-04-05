@@ -4,7 +4,7 @@ import Image from "src/components/Image";
 const logoSrc = require("resources/img/ot18Logo.png");
 
 
-class HomePageContainer extends Component {
+class LandingPage extends Component {
 
     render() {
 
@@ -22,4 +22,4 @@ class HomePageContainer extends Component {
     }
 }
 
-export default HomePageContainer;
+export default LandingPage;

@@ -1,5 +1,9 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
+
+import {
+    writeUpdateActiveNav
+} from "src/actions/main";
 
 import {
     HOME_NAV,
@@ -8,17 +12,17 @@ import {
 
 class NavBar extends Component {
 
-    constructor() {
-        super();
-
-        this.state = {
-            activeNav: HOME_NAV
-        };
-    }
-
     render() {
-        const homeNavClass = this.state.activeNav === HOME_NAV ? "uk-active" : "";
-        const episodesNavClass = this.state.activeNav === EPISODES_NAV ? "uk-active" : "";
+        const {
+            activeNav,
+            dispatch
+        } = this.props;
+        const activeNavHome = activeNav === HOME_NAV;
+        const activeNavEmpty = activeNav === "";
+        const homeNavClass = (activeNavHome || activeNavEmpty) ? "uk-active" : "";
+        const episodesNavClass = activeNav === EPISODES_NAV ? "uk-active" : "";
+        
+
         return (
             <div className="uk-position-top-left uk-margin-large-left">
                 <nav
@@ -28,28 +32,30 @@ class NavBar extends Component {
                     <div className="uk-navbar-center">
                         <ul className="uk-navbar-nav">
                             <li className={homeNavClass}>
-                                <Link
-                                    to="/"
-                                    onClick={() => {
-                                        this.setState({
-                                            activeNav: HOME_NAV
-                                        });
+                                <a
+                                    href=""
+                                    onClick={(event) => {
+                                        event.preventDefault();
+                                        dispatch(
+                                            writeUpdateActiveNav(HOME_NAV)
+                                        );
                                     }}
                                 >
                                     HOME
-                                </Link>
+                                </a>
                             </li>
                             <li className={episodesNavClass}>
-                                <Link
-                                    to="/episodes"
-                                    onClick={() => {
-                                        this.setState({
-                                            activeNav: EPISODES_NAV
-                                        });
+                                <a
+                                    href=""
+                                    onClick={(event) => {
+                                        event.preventDefault();
+                                        dispatch(
+                                            writeUpdateActiveNav(EPISODES_NAV)
+                                        );
                                     }}
                                 >
                                     EPISODES
-                                </Link>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -58,5 +64,10 @@ class NavBar extends Component {
         );
     }
 }
+
+NavBar.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    activeNav: PropTypes.string
+};
 
 export default NavBar;
