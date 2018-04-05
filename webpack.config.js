@@ -7,7 +7,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
 const PROD = process.env.NODE_ENV === "PROD";
 
