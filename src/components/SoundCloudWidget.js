@@ -40,8 +40,8 @@ class SoundCloudWidget extends Component {
                 }
                 <iframe
                     id={id}
-                    width="75%"
-                    height="500"
+                    width="100%"
+                    height="300"
                     scrolling="no"
                     frameBorder="no"
                     src={soundCloudSrc}

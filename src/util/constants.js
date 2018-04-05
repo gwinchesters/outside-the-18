@@ -1,3 +1,7 @@
+export const HOME_NAV = "HOME_NAV";
+export const EPISODES_NAV = "EPISODES_NAV";
+
+
 export const SOUNDCLOUD_API_URL = "https://w.soundcloud.com/player/api.js";
 export const SOUNDCLOUD_PLAYER_URL =
     "https://w.soundcloud.com/player/?url=http://";

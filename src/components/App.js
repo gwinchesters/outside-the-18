@@ -1,26 +1,31 @@
 import React, {Component} from "react";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import {hot} from "react-hot-loader";
-import {auth, provider} from "src/components/firebase";
-
-import SoundCloudWidget from "src/components/SoundCloudWidget";
+import NavBar from "src/components/NavBar";
+import HomePageContainer from "src/containers/HomePageContainer";
+import EpisodesPageContainer from "src/containers/EpisodesPageContainer";
 
 require("styles/base.scss");
 
 
 class App extends Component {
     render() {
-        auth.signInWithPopup(provider) 
-            .then((result) => {
-                const user = result.user;
-                this.setState({
-                    user
-                });
-            });
 
         return (
-            <div>
-                <SoundCloudWidget id="ot18-iframe"/>
-            </div>
+            <Router>
+                <div>
+                    <NavBar/>
+                    <Route 
+                        exact
+                        path="/"
+                        component={HomePageContainer}
+                    />
+                    <Route
+                        path="/episodes"
+                        component={EpisodesPageContainer}
+                    />
+                </div>
+            </Router>
         );
     }
 }

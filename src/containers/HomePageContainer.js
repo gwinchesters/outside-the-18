@@ -1,12 +1,23 @@
 import React, {Component} from "react";
-import NavBar from "src/components/NavBar";
+import Image from "src/components/Image";
+
+const logoSrc = require("resources/img/ot18Logo.png");
+
 
 class HomePageContainer extends Component {
 
     render() {
 
         return (
-            <NavBar/>
+            <div className="">
+                <Image
+                    id="homepage-logo"
+                    imgSrc={logoSrc}
+                    classVal="uk-animation-fade uk-margin-auto uk-position-center"
+                    height="65%"
+                    width="65%"
+                />
+            </div>
         );
     }
 }
