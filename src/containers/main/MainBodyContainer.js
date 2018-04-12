@@ -1,11 +1,28 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-
+import {connect} from "react-redux";
 import SoundCloudWidget from "src/components/main/SoundCloudWidget";
+
+import {getBlogPosts} from "src/actions/blog";
 
 import {PODCAST} from "src/util/constants";
 
 class MainBodyContainer extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        const {
+            activeContent,
+            dispatch
+        } = this.props;
+    
+        if (!activeContent || activeContent !== "") {
+            dispatch(getBlogPosts(5));
+        }
+    }
 
     render() {
         const {
@@ -27,7 +44,16 @@ class MainBodyContainer extends Component {
 }
 
 MainBodyContainer.propTypes = {
-    activeContent: PropTypes.string
+    activeContent: PropTypes.string,
+    dispatch: PropTypes.func
 };
 
-export default MainBodyContainer;
+function mapStateToProps(state) {
+    return {
+        blog: state.blog,
+        posts: state.blog.get("posts")
+    };
+}
+
+
+export default connect(mapStateToProps)(MainBodyContainer);

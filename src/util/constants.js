@@ -1,6 +1,7 @@
 export const PODCAST = "podcast";
 export const BLOG = "blog";
 
+export const TUMBLR_BLOG_NAME = "outsidethe18blog.tumblr.com";
 
 export const SOUNDCLOUD_API_URL = "https://w.soundcloud.com/player/api.js";
 export const SOUNDCLOUD_PLAYER_URL =
