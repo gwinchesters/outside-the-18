@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "babel-polyfill": "^6.9.0",
+        "bulma": "^0.6.2",
         "es6-promise": "^4.1.1",
         "firebase": "^4.12.1",
         "history": "^4.7.2",
@@ -29,7 +30,6 @@
         "react-script-loader-hoc": "^1.1.0",
         "redux": "^3.7.2",
         "redux-thunk": "^2.2.0",
-        "uikit": "^3.0.0-beta.41",
         "whatwg-fetch": "2.0.3"
     },
     "devDependencies": {
@@ -43,7 +43,6 @@
         "babel-preset-react-app": "^3.1.1",
         "babel-runtime": "6.26.0",
         "compression-webpack-plugin": "^1.1.11",
-        "copy-webpack-plugin": "^4.5.1",
         "cross-env": "^5.1.4",
         "css-loader": "0.28.7",
         "eslint": "^4.19.1",

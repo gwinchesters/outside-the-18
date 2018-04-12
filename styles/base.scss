@@ -1,19 +1,6 @@
-@import "~uikit/src/scss/variables.scss";
-@import "~uikit/src/scss/mixins.scss";
-
-@import "~uikit/src/scss/uikit.scss";
-
-$background-color: $global-secondary-background !default;
-
-html, body {
-    margin: 0;
-    height: 100%;
-}
-
-#root {
-    padding: 0 0 0 0;
-    height: 100%;
-    background-color: $background-color
-}
-
+@import "node_modules/bulma/sass/utilities/initial-variables";
+@import "node_modules/bulma/sass/utilities/functions";
+@import "styles/bulma_overrides.scss";
+@import '~bulma';
+@import "styles/spacing.scss";
 

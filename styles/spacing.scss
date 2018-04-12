@@ -1,0 +1,27 @@
+$sizeUnit: rem;
+$marginKey: 'margin';
+$separator: '-';
+$sizes: (
+    ('none', 0),
+    ('sm', 0.5),
+    ('md', 1),
+    ('lg', 2),
+);
+$positions: ('top', 'right', 'bottom','left');
+
+@function sizeValue($key, $value) {
+    @return if($key == 'none', 0, $value + $sizeUnit);
+}
+
+@each $size in $sizes {
+    $sizeKey: nth($size, 1);
+    $sizeValue: nth($size, 2);
+    .#{$marginKey}#{$separator}#{$sizeKey} {
+        margin: sizeValue($sizeKey, $sizeValue);
+    }
+    @each $position in $positions {
+        .#{$marginKey}#{$separator}#{$position}#{$separator}#{$sizeKey} {
+            margin-#{$position}: sizeValue($sizeKey, $sizeValue);
+        }
+    }
+}

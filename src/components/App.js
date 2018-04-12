@@ -2,10 +2,9 @@ import React, {Component} from "react";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import {hot} from "react-hot-loader";
 
-import MainPageContainer from "src/containers/MainPageContainer";
-import AdminPageContainer from "src/containers/AdminPageContainer";
-
-require("styles/base.scss");
+import MainPage from "src/components/main/MainPage";
+import AdminPage from "src/components/admin/AdminPage";
+import "styles/base.scss";
 
 
 class App extends Component {
@@ -17,12 +16,16 @@ class App extends Component {
                     <Route 
                         exact
                         path="/"
-                        component={MainPageContainer}
+                        component={MainPage}
                     />
                     <Route
                         exact
                         path="/admin"
-                        component={AdminPageContainer}
+                        component={AdminPage}
+                    />
+                    <Route
+                        path="/:page"
+                        component={MainPage}
                     />
                 </div>
             </Router>

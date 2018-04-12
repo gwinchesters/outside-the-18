@@ -1,0 +1,19 @@
+// Variable Overrides
+
+$navbar-item-img-max-height: 6rem;
+$navbar-height: 4rem;
+
+$navbar-item-hover-color: $grey-light;
+
+$grey-light-invert: findColorInvert($grey-light);
+
+// Custom additions
+@import "node_modules/bulma/sass/utilities/derived-variables";
+
+$addColors: (
+    "grey":($grey-light,$grey-light-invert)
+);
+
+$colors: map-merge($colors, $addColors);
+
+
