@@ -30,7 +30,6 @@
         "react-script-loader-hoc": "^1.1.0",
         "redux": "^3.7.2",
         "redux-thunk": "^2.2.0",
-        "tumblr.js": "^1.1.1",
         "whatwg-fetch": "2.0.3"
     },
     "devDependencies": {

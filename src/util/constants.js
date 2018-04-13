@@ -1,13 +1,19 @@
 export const PODCAST = "podcast";
 export const BLOG = "blog";
 
-export const TUMBLR_BLOG_NAME = "outsidethe18blog.tumblr.com";
+/* TUMBLR */
+export const BLOG_ID = "outsidethe18blog.tumblr.com";
+export const TUMBLR_BASE = "api.tumblr.com/v2/blog/";
+export const CONSUMER_KEY = 
+    "tYrwAzgpHsdZbk67C8FqIrkFBLmcLCRk7jSahbX1HLL8FjXDtN";
 
+/* SOUND CLOUD */
 export const SOUNDCLOUD_API_URL = "https://w.soundcloud.com/player/api.js";
 export const SOUNDCLOUD_PLAYER_URL =
     "https://w.soundcloud.com/player/?url=http://";
 export const OT18_SOUNDCLOUD_URL = "soundcloud.com/outsidethe18";
 
+/* FIREBASE */
 export const FIREBASE_CONFIG = {
     apiKey: "AIzaSyALPXAiXbMkU9Gq4JSMcRzj41BV_qdS3Ek",
     authDomain: "outsidethe18-6bda8.firebaseapp.com",

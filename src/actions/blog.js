@@ -1,5 +1,12 @@
-import Tumblr from "src/util/tumblrClient";
-import {TUMBLR_BLOG_NAME} from "src/util/constants";
+import "whatwg-fetch";
+
+import {
+    statusHandler,
+    jsonHandler,
+    buildRequestObject
+} from "src/util/request";
+
+import {getPosts} from "src/util/tumblr";
 
 export const WRITE_GET_POSTS_REQUEST = "WRITE_GET_POSTS_REQUEST";
 export const WRITE_GET_POSTS_SUCCESS = "WRITE_GET_POSTS_SUCCESS";
@@ -26,18 +33,21 @@ export function writeGetPostsError() {
 
 export function writeGetPosts(limit) {
     return (dispatch) => {
-        dispatch(writeGetPostsRequest());
-
         const options = {
             limit: limit
         };
+        const url = getPosts(options);
+        const requestObject = buildRequestObject();
 
-        Tumblr.blogPosts(TUMBLR_BLOG_NAME, options, (err, data) => {
-            if (err) {
-                dispatch(writeGetPostsError());
-            } else {
-                dispatch(writeGetPostsSuccess(data));
-            }
-        });
+        dispatch(writeGetPostsRequest());
+
+        fetch(url, requestObject)
+            .then(statusHandler)
+            .then(jsonHandler)
+            .then((json) => {
+                if (json.children && json.children.length) {
+                    dispatch(writeGetPostsSuccess(json.posts));
+                }
+            });
     };
 }

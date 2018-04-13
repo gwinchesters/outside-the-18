@@ -5680,7 +5680,7 @@ qs@~6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
 
-query-string@^4.1.0, query-string@^4.2.2:
+query-string@^4.1.0:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-4.3.4.tgz#bbb693b9ca915c232515b228b1a02b609043dbeb"
   dependencies:
@@ -6082,7 +6082,7 @@ request@2.81.0:
     tunnel-agent "^0.6.0"
     uuid "^3.0.0"
 
-request@2.83.0, request@^2.74.0, request@^2.81.0:
+request@2.83.0, request@^2.81.0:
   version "2.83.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.83.0.tgz#ca0b65da02ed62935887808e6f510381034e3356"
   dependencies:
@@ -6923,14 +6923,6 @@ tslib@^1.9.0:
 tty-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
-
-tumblr.js@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/tumblr.js/-/tumblr.js-1.1.1.tgz#a72423e7a08781952d2a45fe4fa35ed15f225c6d"
-  dependencies:
-    lodash "^4.14.0"
-    query-string "^4.2.2"
-    request "^2.74.0"
 
 tunnel-agent@^0.6.0:
   version "0.6.0"

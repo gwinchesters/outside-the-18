@@ -1,26 +1,33 @@
-// import React, {Component} from "react";
-// // import PropTypes from "prop-types";
-// // import Immutable from "immutable";
+import React, {Component} from "react";
+import PropTypes from "prop-types";
+import Immutable from "immutable";
 
-// class BlogPostPreview extends Component {
+class BlogPostPreview extends Component {
 
-//     render() {
-//         const {
-//             numPreviews,
-//             isFetching,
-//             error,
-//             posts,
-//         } = this.props;
+    render() {
+        const {
+            isFetching,
+            error,
+            posts
+        } = this.props;
 
-//         return null;
-//     }
-// }
+        return (
+            <div>
+                {isFetching && !error &&
+                    <p>Loading</p>
+                }
+                {!isFetching &&
+                    posts.get(0).get("title")
+                }
+            </div>
+        );
+    }
+}
 
-// // BlogPostPreview.propTypes = {
-// //     numPreviews: PropTypes.number,
-// //     isFetching: PropTypes.bool,
-// //     error: propTypes.false,
-// //     posts: PropTypes.instanceOf(Immutable.List)
-// // };
+BlogPostPreview.propTypes = {
+    isFetching: PropTypes.bool,
+    error: PropTypes.bool,
+    posts: PropTypes.instanceOf(Immutable.List)
+};
 
-// export default BlogPostPreview;
+export default BlogPostPreview;
