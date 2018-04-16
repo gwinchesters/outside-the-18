@@ -22,7 +22,7 @@ function blogReducer(state = initialState, action) {
             return state.withMutations((newState) => {
                 newState
                     .set("isFetching", false)
-                    .set("posts", action.posts);
+                    .set("posts", Immutable.fromJS(action.posts));
             });
         case WRITE_GET_POSTS_ERROR:
             return state.withMutations((newState) => {

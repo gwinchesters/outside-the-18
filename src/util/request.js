@@ -29,29 +29,10 @@ export function jsonHandler(response) {
  * multipart form
  * @return {Object}
  */
-export function buildRequestObject(method, body, isMultiPartForm = false) {
+export function buildRequestObject(method, body) {
     const requestObject = {
-        credentials: "include",
-        method: method || "GET",
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            "Cache-Control": "no-cache, no-store, must-revalidate, " +
-                "proxy-revalidate",
-            "Expires": "-1"
-        }
+        method: method || "GET"
     };
-
-    if (isMultiPartForm) {
-        requestObject.headers = {
-            Accept: "text/html,application/xhtml+xml,application/xml;q=0.9," +
-                "image/webp,*/*;q=0.8",
-        };
-
-        requestObject.body = body;
-
-        return requestObject;
-    }
 
     if (body) {
         requestObject.body = JSON.stringify(body);

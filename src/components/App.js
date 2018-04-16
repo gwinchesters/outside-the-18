@@ -4,8 +4,12 @@ import {hot} from "react-hot-loader";
 
 import MainPage from "src/components/main/MainPage";
 import AdminPage from "src/components/admin/AdminPage";
+
+import fontawesome from "@fortawesome/fontawesome";
+import brands from "@fortawesome/fontawesome-free-brands";
 import "styles/base.scss";
 
+fontawesome.library.add(brands);
 
 class App extends Component {
     render() {

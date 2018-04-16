@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import Immutable from "immutable";
 
 import SoundCloudWidget from "src/components/main/SoundCloudWidget";
-import BlogPostPreview from "src/components/main/BlogPostPreview";
+import BlogPostGrid from "src/components/main/BlogPostGrid";
 
 import {writeGetPosts} from "src/actions/blog";
 import {PODCAST} from "src/util/constants";
@@ -17,13 +17,16 @@ class MainBodyContainer extends Component {
 
     componentWillMount() {
         const {
-            activeContent,
+            posts,
+            blog,
             dispatch
         } = this.props;
-    
-        if (!activeContent || activeContent === "") {
-            dispatch(writeGetPosts(5));
-        }
+
+        const isFetching = blog.get("isFetching");
+
+        if (posts.size === 0 || !isFetching) {
+            dispatch(writeGetPosts(3));
+        }        
     }
 
     render() {
@@ -37,21 +40,21 @@ class MainBodyContainer extends Component {
         const error = blog.get("error");
         if (activeContent === PODCAST) {
             content = 
-                <div className="container box margin-top-lg">
+                <div className="margin-top-lg">
                     <SoundCloudWidget id="ot18-iframe"/>
                 </div>;
         } else {
             content = 
-                <BlogPostPreview
+                <BlogPostGrid
                     isFetching={isFetching}
                     error={error}
                     posts={posts}
                 />;
         }
         return (
-            <div>
+            <div className="container margin-bottom-lg">
                 {content}
-            </div>  
+            </div>
         );
     }
 }

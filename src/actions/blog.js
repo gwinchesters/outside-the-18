@@ -45,9 +45,8 @@ export function writeGetPosts(limit) {
             .then(statusHandler)
             .then(jsonHandler)
             .then((json) => {
-                if (json.children && json.children.length) {
-                    dispatch(writeGetPostsSuccess(json.posts));
-                }
+
+                dispatch(writeGetPostsSuccess(json.response.posts));
             });
     };
 }
