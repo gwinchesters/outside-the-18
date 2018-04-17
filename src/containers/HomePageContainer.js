@@ -15,8 +15,12 @@ class HomePageContainer extends Component {
 
     componentWillMount() {
         const {
-            posts
+            posts,
+            blog,
+            dispatch
         } = this.props;
+
+        const isFetching = blog.get("isFetching");
 
         if (posts.size === 0 && !isFetching) {
             dispatch(writeGetPosts());
@@ -42,11 +46,14 @@ class HomePageContainer extends Component {
 }
 
 HomePageContainer.propTypes = {
-    posts: PropTypes.instanceOf(Immutable.List)
+    blog: PropTypes.instanceOf(Immutable.Map),
+    posts: PropTypes.instanceOf(Immutable.List),
+    dispatch: PropTypes.func
 };
 
 function mapStateToProps(state) {
     return {
+        blog: state.blog,
         posts: state.blog.get("posts")
     };
 }

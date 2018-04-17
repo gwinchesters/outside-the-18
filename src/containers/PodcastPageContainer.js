@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 import SoundCloudWidget from "src/components/SoundCloudWidget";
 
-class PodcastPageContainer extends Component{
+class PodcastPageContainer extends Component {
 
     render() {
 
