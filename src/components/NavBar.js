@@ -1,34 +1,21 @@
 import React, {Component} from "react";
-import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 
 import logoSrc from "resources/img/ot18Logo.png";
 
-import {
-    PODCAST,
-    BLOG
-} from "src/util/constants";
-
 class NavBar extends Component {
 
     render() {
-        const {
-            activeContent
-        } = this.props;
-        const podcastClass = activeContent === PODCAST ? " is-active" : "";
-        const blogClass = activeContent === BLOG ? " is-active" : "";
-        
-
         return (
             <nav className="navbar is-dark">
                 <div className="navbar-brand">
-                    <Link
+                    <NavLink
                         className="navbar-item"
                         to="/"
                     >
                         <img src={logoSrc}/>
-                    </Link>
+                    </NavLink>
                     <a
                         role="button"
                         className="navbar-burger"
@@ -42,27 +29,44 @@ class NavBar extends Component {
                 </div>
                 <div className="navbar-menu">
                     <div className="navbar-start">
-                        <Link
-                            className={"navbar-item" + podcastClass}
+                        <NavLink
+                            className="navbar-item"
+                            activeClassName="is-active"
                             to="/podcast"
                         >
                             PODCAST
-                        </Link>
-                        <Link
-                            className={"navbar-item" + blogClass}
+                        </NavLink>
+                        <NavLink
+                            className="navbar-item"
+                            activeClassName="is-active"
                             to="/blog"
                         >
                             BLOG
-                        </Link>
+                        </NavLink>
                     </div>
                     <div className="navbar-end">
-                        <a className="navbar-item">
+                        <a
+                            className="navbar-item"
+                            rel="noopener noreferrer"
+                            href="https://twitter.com/OutsideThe18Pod"
+                            target="_blank"
+                        >
                             <FontAwesomeIcon icon={["fab", "twitter"]}/>
                         </a>
-                        <a className="navbar-item">
+                        <a
+                            className="navbar-item"
+                            rel="noopener noreferrer"
+                            href="http://www.facebook.com/OT18pod"
+                            target="_blank"
+                        >
                             <FontAwesomeIcon icon={["fab", "facebook-f"]}/>
                         </a>
-                        <a className="navbar-item">
+                        <a
+                            className="navbar-item"
+                            rel="noopener noreferrer"
+                            href="https://itunes.apple.com/us/podcast/outside-the-18/id996542298?mt=2"
+                            target="_blank"
+                        >
                             <FontAwesomeIcon icon={["fab", "itunes-note"]}/>
                         </a>
                     </div>
@@ -71,9 +75,5 @@ class NavBar extends Component {
         );
     }
 }
-
-NavBar.propTypes = {
-    activeContent: PropTypes.string
-};
 
 export default NavBar;

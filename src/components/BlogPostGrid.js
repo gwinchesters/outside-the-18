@@ -2,24 +2,26 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import Immutable from "immutable";
 
-import BlogPost from "src/components/main/BlogPost";
+import BlogPostPreview from "src/components/BlogPostPreview";
 
 class BlogPostGrid extends Component {
 
     render() {
         const {
-            posts
+            posts,
+            limit
         } = this.props;
+        const postList = posts.slice(0,limit);
 
         return (
             <div className="columns">
-                {posts.map((post) => {
+                {postList.map((post) => {
                     return (
                         <div
                             key={post.get("id")}
                             className="column margin-top-lg"
                         >
-                            <BlogPost post={post} />
+                            <BlogPostPreview post={post} />
                         </div>
                     );
                 })}
@@ -29,7 +31,8 @@ class BlogPostGrid extends Component {
 }
 
 BlogPostGrid.propTypes = {
-    posts: PropTypes.instanceOf(Immutable.List)
+    posts: PropTypes.instanceOf(Immutable.List),
+    limit: PropTypes.number
 };
 
 export default BlogPostGrid;

@@ -1,21 +1,18 @@
 import React, {Component} from "react";
-import PropTypes from "prop-types";
 
-class PageFooter extends Component {
+class Footer extends Component {
 
     render() {
         return (
             <footer className="footer">
                 <div className="container">
-                    {this.props.children}
+                    <div className="content has-text-centered">
+                        <p> © 2018 | Outside The 18 </p>
+                    </div>
                 </div>
             </footer>
         );
     }
 }
 
-PageFooter.propTypes = {
-    children: PropTypes.object
-};
-
-export default PageFooter;
+export default Footer;

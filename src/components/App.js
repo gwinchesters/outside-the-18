@@ -1,15 +1,16 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 import {hot} from "react-hot-loader";
-
-import MainPage from "src/components/main/MainPage";
-import AdminPage from "src/components/admin/AdminPage";
 
 import fontawesome from "@fortawesome/fontawesome";
 import brands from "@fortawesome/fontawesome-free-brands";
+fontawesome.library.add(brands);
+
 import "styles/base.scss";
 
-fontawesome.library.add(brands);
+import NavBar from "src/components/Navbar";
+import Routes from "src/components/Routes";
+import Footer from "src/components/Footer";
 
 class App extends Component {
     render() {
@@ -17,20 +18,9 @@ class App extends Component {
         return (
             <Router>
                 <div>
-                    <Route 
-                        exact
-                        path="/"
-                        component={MainPage}
-                    />
-                    <Route
-                        exact
-                        path="/admin"
-                        component={AdminPage}
-                    />
-                    <Route
-                        path="/:page"
-                        component={MainPage}
-                    />
+                    <NavBar/>
+                    <Routes/>
+                    <Footer/>
                 </div>
             </Router>
         );

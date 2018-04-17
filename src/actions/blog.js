@@ -33,9 +33,11 @@ export function writeGetPostsError() {
 
 export function writeGetPosts(limit) {
     return (dispatch) => {
-        const options = {
-            limit: limit
-        };
+        const options = {};
+        if (limit) {
+            options.limit = limit;
+        }
+        
         const url = getPosts(options);
         const requestObject = buildRequestObject();
 
